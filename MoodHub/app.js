@@ -36,7 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Session for the mood:
 const session = require("express-session");
 // Session for Mood
-const session = require("express-session");
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
