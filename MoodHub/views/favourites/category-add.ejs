@@ -1,0 +1,46 @@
+<%- include('../partials/header', { title: pageTitle }) %> <%-
+include('../partials/sidebar') %>
+
+<main class="dashboard-container" style="margin-left:630px;" >
+  <div class="category-header">
+    <h1>Add <%= singleName %></h1>
+    <a href="/favourites/<%= category %>" class="btn-secondary">← Back</a>
+  </div>
+
+  <form
+    action="/favourites/<%= category %>/add"
+    method="POST"
+    class="add-form"
+    enctype="multipart/form-data"
+  >
+    <label>Title</label>
+    <input type="text" name="title" placeholder="Enter title" required />
+
+    <label>Poster (upload image)</label>
+    <input type="file" name="posterFile" accept="image/*" />
+
+    <label>Poster URL (optional)</label>
+    <input type="text" name="posterUrl" placeholder="https://image-link.com" />
+
+    <label>Description</label>
+    <textarea
+      name="description"
+      rows="4"
+      placeholder="Why do you like it?"
+    ></textarea>
+
+    <label>Rating</label>
+    <select name="rating">
+      <option value="0">No rating</option>
+      <option value="1">1 ★</option>
+      <option value="2">2 ★★</option>
+      <option value="3">3 ★★★</option>
+      <option value="4">4 ★★★★</option>
+      <option value="5">5 ★★★★★</option>
+    </select>
+
+    <button type="submit" class="btn-primary">Add <%= singleName %></button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>

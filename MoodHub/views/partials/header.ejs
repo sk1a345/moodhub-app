@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title || "MoodHub" %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/favourite.css"/>
+    <link rel="stylesheet" href="/css/fav-category.css">
+    <link rel="stylesheet" href="/css/todo.css">
+    <link rel="stylesheet" href="/css/notes.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/mood.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <h1>MoodHub</h1>
+        </div>
+        <div class="nav-right">
+          <% if(!isLoggedIn) { %>
+          <a href="/" class="<%= currentPage=== 'home' ? 'act-class' : '' %>">Home</a>
+          <a href="/login" class="<%= currentPage=== 'login' ? 'act-class' : '' %>">Login</a>
+          <a href="/signup" class="btn-primary">Sign up</a>
+          <% } else { %> 
+          <a href="/dashboard">Dashboard</a>
+          <a href="/logout" class="btn-primary">Logout</a>
+          <% } %>
+        </div>
+      </nav>
+    </header>

@@ -1,0 +1,152 @@
+/* ---------------------------------
+   MAIN LAYOUT
+----------------------------------- */
+.favorites-wrapper {
+  padding: 40px;
+  padding-left: 80px;
+  margin-left: 230px; /* Space for sidebar */
+}
+
+.fav-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.fav-subtitle {
+  color: #6d6d6d;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+/* ---------------------------------
+   GRID
+----------------------------------- */
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  padding-bottom: 40px;
+}
+
+/* ---------------------------------
+   CARD
+----------------------------------- */
+.fav-card {
+  display: block;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fav-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* ---------------------------------
+   IMAGE SECTION
+----------------------------------- */
+.fav-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.fav-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fav-icon {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  font-size: 28px;
+  background: rgba(255,255,255,0.9);
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ---------------------------------
+   DETAILS SECTION
+----------------------------------- */
+.fav-detail {
+  padding: 20px;
+}
+
+.fav-detail h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.fav-detail p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* Prevent double H3 issue */
+.fav-detail h3 + h3 {
+  margin-top: 0;
+  font-weight: 500;
+  color: #858585;
+}
+
+/* ---------------------------------
+   RESPONSIVE STYLES
+----------------------------------- */
+
+/* --- Tablets (sidebar collapses maybe) --- */
+@media (max-width: 992px) {
+  .favorites-wrapper {
+    margin-left: 0;
+    padding: 30px 20px;
+  }
+
+  .fav-grid {
+    gap: 22px;
+  }
+}
+
+/* --- Mobile --- */
+@media (max-width: 600px) {
+  .favorites-wrapper {
+    padding: 18px;
+  }
+
+  .fav-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .fav-subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .fav-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .fav-card {
+    border-radius: 14px;
+  }
+
+  .fav-img {
+    height: 160px;
+  }
+
+  .fav-detail h3 {
+    font-size: 1.15rem;
+  }
+}

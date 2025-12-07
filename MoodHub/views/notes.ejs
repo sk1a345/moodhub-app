@@ -1,0 +1,46 @@
+<%- include('partials/header',{title: pageTitle}) %>
+<%- include('partials/sidebar') %>
+
+<main class="dashboard-container">
+
+  <h1>Add Note</h1>
+
+  <!-- Add Note Box -->
+  <form action="/notes/add" method="POST" class="note-add-box">
+    <input type="text" name="title" placeholder="Note title..." required>
+    <textarea name="description" placeholder="Write your note..." required></textarea>
+    <button type="submit" class="note-btn-add">
+      <i class="ri-add-circle-line"></i> Add Note
+    </button>
+  </form>
+
+  <!-- Notes Listing -->
+  <% if (notes.length === 0) { %>
+      <p class="no-notes">No notes added yet.</p>
+  <% } else { %>
+
+    <h3>Your Notes</h3>
+
+    <div class="notes-grid">
+      <% notes.forEach(note => { %>
+        <div class="note-card">
+
+          <h2><%= note.title %></h2>
+          <p><%= note.description %></p>
+
+          <!-- Delete Button -->
+          <form action="/notes/<%= note._id %>/delete" method="POST">
+            <button class="note-delete-btn" title="Delete">
+              <i class="ri-delete-bin-6-line"></i>
+            </button>
+          </form>
+
+        </div>
+      <% }) %>
+    </div>
+
+  <% } %>
+
+</main>
+
+<%- include('partials/footer') %>

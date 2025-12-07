@@ -1,0 +1,85 @@
+<%- include('../partials/header', { title: pageTitle }) %>
+<%- include('../partials/sidebar') %>
+
+<main class="favorites-wrapper">
+
+  <h1 class="fav-title">My Favourites</h1>
+  <p class="fav-subtitle">Choose a category to view your collection</p>
+
+  <section class="fav-grid">
+
+    <!-- Books -->
+    <a href="/favourites/books" class="fav-card">
+      <div class="fav-img">
+        <img src="/images/favourites/books.png" alt="Books">
+        <span class="fav-icon">📘</span>
+      </div>
+      <div class="fav-detail">
+        <h3>Books</h3>
+        <p><%= counts.books %> items</p>
+      </div>
+    </a>
+
+    <!-- Anime -->
+    <a href="/favourites/anime" class="fav-card">
+      <div class="fav-img">
+        <img src="/images/favourites/anime.png" alt="Anime">
+        <span class="fav-icon">📺</span>
+      </div>
+      <div class="fav-detail">
+        <h3>Anime + Dramas + Cartoons</h3>
+        <p><%= counts.anime %> items</p>
+      </div>
+    </a>
+
+    <!-- Movies -->
+    <a href="/favourites/movies" class="fav-card">
+      <div class="fav-img">
+        <img src="/images/favourites/movies.png" alt="Movies">
+        <span class="fav-icon">🍿</span>
+      </div>
+      <div class="fav-detail">
+        <h3>Movies</h3>
+        <p><%= counts.movies %> items</p>
+      </div>
+    </a>
+
+    <!-- Games -->
+    <a href="/favourites/games" class="fav-card">
+      <div class="fav-img">
+        <img src="/images/favourites/games.png" alt="Games">
+        <span class="fav-icon">🎮</span>
+      </div>
+      <div class="fav-detail">
+        <h3>Games</h3>
+        <p><%= counts.games %> items</p>
+      </div>
+    </a>
+    <!-- Music -->
+    <a href="/favourites/music" class="fav-card">
+      <div class="fav-img">
+        <img src="/images/favourites/music.png" alt="music">
+        <span class="fav-icon">🎵</span>
+      </div>
+      <div class="fav-detail">
+        <h3>Music</h3>
+        <h3><%= counts.music %> items</h3>
+      </div>
+    </a>
+    <!-- Food -->
+    <a href="/favourites/food" class="fav-card">
+      <div class="fav-img">
+        <img src="/images/favourites/food.png" alt="Food">
+        <span class="fav-icon">🍕</span>
+      </div>
+      <div class="fav-detail">
+        <h3>Food</h3>
+        <p><%= counts.food %> items</p>
+      </div>
+    </a>
+
+  </section>
+
+</main>
+
+<%- include('../partials/footer') %>

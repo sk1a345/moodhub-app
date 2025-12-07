@@ -1,0 +1,300 @@
+<%- include('partials/header',{title:pageTitle}) %>
+
+<%- include('partials/sidebar') %>
+
+<main class="dashboard-container">
+
+<div class="chat-wrapper">
+
+    <!-- Header -->
+    <div class="chat-header">
+        <h1>MoodBuddy</h1>
+        <p>Your personal AI companion — always here to help 💛</p>
+    </div>
+
+    <!-- Chat Box -->
+    <div id="chatBox" class="chat-box"></div>
+
+    <!-- Input -->
+    <form id="chatForm" class="chat-form">
+        <input 
+            type="text" 
+            id="userInput" 
+            placeholder="Ask MoodBuddy anything..." 
+            autocomplete="off"
+            required
+        />
+        <button type="submit">Send</button>
+    </form>
+
+</div>
+
+<script>
+    const chatForm = document.getElementById("chatForm");
+    const chatBox = document.getElementById("chatBox");
+    const userInput = document.getElementById("userInput");
+
+    function addMessage(role, text) {
+        const msg = document.createElement("div");
+        msg.className = role === "user" ? "user-msg" : "bot-msg";
+        msg.innerText = text;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    chatForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        addMessage("user", message);
+        userInput.value = "";
+
+        // Temporary loading message
+        const loading = document.createElement("div");
+        loading.className = "bot-msg loading";
+        loading.innerText = "MoodBuddy is thinking...";
+        chatBox.appendChild(loading);
+
+        try {
+            const res = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await res.json();
+            chatBox.removeChild(loading);
+            addMessage("bot", data.reply);
+
+        } catch (err) {
+            chatBox.removeChild(loading);
+            addMessage("bot", "Something went wrong… try again.");
+        }
+    });
+</script>
+<style>
+/* Chat Wrapper */
+.chat-wrapper {
+    width: 65%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Header */
+.chat-header {
+    background: linear-gradient(135deg, #6a9cff, #b084ff);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.chat-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.chat-header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Chat Box */
+.chat-box {
+    height: 450px;
+    overflow-y: auto;
+    background: #f7f7f7;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #eaeaea;
+}
+
+/* Messages */
+.user-msg {
+    background: #dce9ff;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    text-align: right;
+    max-width: 75%;
+    margin-left: auto;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+}
+
+.bot-msg {
+    background: #eeeeee;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    max-width: 75%;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+}
+
+.loading {
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* Chat Input */
+.chat-form {
+    display: flex;
+    gap: 10px;
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: #fdfdfd;
+}
+
+button {
+    padding: 12px 18px;
+    background: #6a9cff;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #578fff;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+
+/* Tablets (up to 1024px) */
+@media (max-width: 1024px) {
+    .chat-wrapper {
+        width: 80%;
+        padding: 18px;
+    }
+
+    .chat-header h1 {
+        font-size: 26px;
+    }
+
+    .chat-header p {
+        font-size: 13px;
+    }
+
+    #userInput, button {
+        font-size: 15px;
+    }
+
+    .chat-box {
+        height: 400px;
+    }
+}
+
+/* Mobile landscape / small tablets (up to 768px) */
+@media (max-width: 768px) {
+    .chat-wrapper {
+        width: 90%;
+        padding: 16px;
+    }
+
+    .chat-header h1 {
+        font-size: 24px;
+    }
+
+    .chat-header p {
+        font-size: 12px;
+    }
+
+    #userInput, button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .chat-box {
+        height: 350px;
+    }
+
+    .user-msg, .bot-msg {
+        max-width: 85%;
+    }
+}
+
+/* Mobile portrait (up to 480px) */
+@media (max-width: 480px) {
+    .chat-wrapper {
+        width: 95%;
+        margin: 20px auto;
+        padding: 14px;
+    }
+
+    .chat-header h1 {
+        font-size: 20px;
+    }
+
+    .chat-header p {
+        font-size: 11px;
+    }
+
+    .chat-box {
+        height: 300px;
+        padding: 12px;
+    }
+
+    #userInput, button {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .user-msg, .bot-msg {
+        max-width: 90%;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 12px;
+    }
+}
+
+/* Extra small devices (up to 375px) */
+@media (max-width: 375px) {
+    .chat-header h1 {
+        font-size: 18px;
+    }
+
+    .chat-header p {
+        font-size: 10px;
+    }
+
+    .chat-box {
+        height: 250px;
+    }
+
+    #userInput {
+        font-size: 12px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+</style>
+
+
+</main>
+
+<%- include('partials/footer') %>

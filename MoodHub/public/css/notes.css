@@ -1,0 +1,120 @@
+/* ================================
+   Add Note Form
+================================ */
+.note-add-box {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.note-add-box input,
+.note-add-box textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d4dceb;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f9fbff;
+  transition: 0.2s ease;
+}
+
+.note-add-box textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.note-add-box input:focus,
+.note-add-box textarea:focus {
+  border-color: #3a7afe;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(58,122,254,0.15);
+}
+
+/* Add button */
+.note-btn-add {
+  background: #3a7afe;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  transition: 0.2s ease;
+}
+
+.note-btn-add:hover {
+  background: #2769f8;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   Notes Grid
+================================ */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Note card */
+.note-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.note-card h2 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 700;
+  color: #333;
+}
+
+.note-card p {
+  font-size: 14px;
+  color: #555;
+  flex: 1;
+}
+
+/* Delete Button */
+.note-delete-btn {
+  background: none;
+  border: none;
+  color: #ff5b5b;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.2s;
+  align-self: flex-end;
+}
+
+.note-delete-btn:hover {
+  color: #e60000;
+  transform: scale(1.15);
+}
+
+/* No notes text */
+.no-notes {
+  margin-top: 20px;
+  color: #777;
+}

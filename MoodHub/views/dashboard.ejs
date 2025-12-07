@@ -1,0 +1,75 @@
+<%- include('partials/header', { title: pageTitle }) %>
+<%- include('partials/sidebar') %>
+
+<main class="dashboard-container">
+
+  <h1 class="dash-title">Welcome Back <%= username %></h1>
+  <p class="sub-heading">Here's what you have in your MoodHub assistant</p>
+
+  <div class="dashboard-grid">
+
+    <!-- Favorites -->
+    <a href="/favourites" class="dash-card">
+      <div class="card-icon todo-icon">❤️</div>
+      <div class="card-content">
+        <h3>Favorites</h3>
+        <p>Manage your favorite interests and more.</p>
+        <span class="card-count"><%= favCount %> items</span>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
+    <!-- To-Do -->
+    <a href="/todo" class="dash-card">
+      <div class="card-icon todo-icon">✔️</div>
+      <div class="card-content">
+        <h3>To-Do List</h3>
+        <p>Keep track of your tasks and stay organized.</p>
+        <span class="card-count"><%= todoCount %> tasks</span>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
+    <!-- Notes -->
+    <a href="/notes" class="dash-card">
+      <div class="card-icon notes-icon">📒</div>
+      <div class="card-content">
+        <h3>Notes</h3>
+        <p>Write and save your thoughts and ideas.</p>
+        <span class="card-count"><%= notesCount %> notes</span>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
+    <!-- Chatbot -->
+    <a href="/chatbot" class="dash-card">
+      <div class="card-icon chat-icon">💬</div>
+      <div class="card-content">
+        <h3>AI Chatbot</h3>
+        <p>Chat with personalized AI </p>
+        <span class="card-count">Ask anything</span>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="quick-stats">
+    <div class="stat-box">
+      <h2><%= favCount %></h2><p>Favorites</p>
+    </div>
+    <div class="stat-box">
+      <h2><%= todoCount %></h2><p>Tasks</p>
+    </div>
+    <div class="stat-box">
+      <h2><%= notesCount %></h2><p>Notes</p>
+    </div>
+    <div class="stat-box">
+      <h2>3</h2><p>Chatbot Chats</p>
+    </div>
+  </div>
+
+</main>
+
+<%- include('partials/footer') %>

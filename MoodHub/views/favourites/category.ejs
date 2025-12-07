@@ -1,0 +1,47 @@
+<%- include('../partials/header', { title: pageTitle }) %>
+<%- include('../partials/sidebar') %>
+
+<main class="category-wrapper">
+
+  <div class="category-header">
+    <h1><%= categoryTitle %></h1>
+    <a href="/favourites/<%= category %>/add" class="btn-primary">+ Add <%= singleName %></a>
+  </div>
+
+  <% if (!items || items.length === 0) { %>
+
+    <section class="empty-state">
+      <h2>No <%= categoryTitle.toLowerCase() %> yet</h2>
+      <p>Add your first <%= singleName.toLowerCase() %> to your list!</p>
+
+      <a href="/favourites/<%= category %>/add" class="btn-primary">
+        Add your first <%= singleName %>
+      </a>
+    </section>
+
+  <% } else { %>
+
+    <section class="items-grid">
+
+      <% items.forEach(item => { %>
+        <div class="item-card">
+          <img src="<%= item.posterUrl || defaultPoster %>" alt="<%= item.title %>">
+
+          <div class="item-body">
+            <h3><%= item.title %></h3>
+            <p class="muted"><%= item.description || '' %></p>
+            <p class="rating">Rating: <%= item.rating %> ★</p>
+            <form action="/favourites/<%= category %>/delete/<%= item._id %>" method="POST">
+              <button class="btn-danger" onclick="return confirm('Delete this item?')">Delete</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+
+    </section>
+
+  <% } %>
+
+</main>
+
+<%- include('../partials/footer') %>

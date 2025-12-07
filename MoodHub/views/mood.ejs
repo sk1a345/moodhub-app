@@ -1,0 +1,53 @@
+<%- include('partials/header', { title: pageTitle }) %> <%-
+include('partials/sidebar') %>
+
+<main class="dashboard-container">
+  <div class="d-container">
+    <h1 class="das-title">How are you feeling today?</h1>
+
+    <p class="dash-subtitle">
+      Select your current mood below and save it to track your emotions!
+    </p>
+
+    <div class="mood-form-container">
+      <form action="/mood" method="POST" class="mood-form">
+        <label class="mood-option">
+          <input type="radio" name="mood" value="🙂happy" />
+          <span>🙂 Happy</span>
+        </label>
+        <label class="mood-option">
+          <input type="radio" name="mood" value="😐neutral" />
+          <span>😐 Neutral</span>
+        </label>
+        <label class="mood-option">
+          <input type="radio" name="mood" value="😞sad" />
+          <span>😞 Sad</span>
+        </label>
+        <label class="mood-option">
+          <input type="radio" name="mood" value="😡angry" />
+          <span>😡 Angry</span>
+        </label>
+        <label class="mood-option">
+          <input type="radio" name="mood" value="😍excited" />
+          <span>😍 Excited</span>
+        </label>
+        <br />
+        <div class="mood-button-container">
+          <button type="submit" class="mood-submit-btn">Save My Mood</button>
+        </div>
+      </form>
+
+      <% if(sessionMood) { %>
+      <h2 class="session-mood">
+        Your current mood is: <strong><%= sessionMood %></strong>
+      </h2>
+      <% } else { %>
+      <h2 class="session-mood">
+        You haven't recorded your mood yet. Pick one above!
+      </h2>
+      <% } %>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

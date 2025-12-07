@@ -1,0 +1,168 @@
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.no-active-tasks{
+  margin-top:20px;
+  margin-bottom: 20px;
+  color: #4caf50 !important;
+  font-weight: 600;
+  font-size: 25px;
+}
+/* =========================================================
+   ADD TASK BOX  
+========================================================= */
+
+.add-box {
+  display: flex;
+  gap: 12px;
+  background: #ffffff;
+  padding: 16px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  margin-bottom: 30px;
+  align-items: center;
+  transition: 0.2s ease;
+}
+
+.add-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+}
+
+.add-box input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #d3dbe7;
+  border-radius: 10px;
+  font-size: 15px;
+  background: #f9fbff;
+  transition: 0.2s ease;
+}
+
+.add-box input:focus {
+  border-color: #3a7afe;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(58,122,254,0.20);
+}
+
+.add-box .btn-primary {
+  padding: 10px 24px;
+  background: #3a7afe;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  transition: 0.25s ease;
+}
+
+.add-box .btn-primary i {
+  font-size: 16px;
+}
+
+.add-box .btn-primary:hover {
+  background: #2769f8;
+  transform: translateY(-1px);
+}
+
+.add-box .btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   TODO ITEM  
+========================================================= */
+
+.todo-item {
+  background: #ffffff;
+  padding: 16px 18px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
+  animation: slideIn 0.45s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+}
+
+/* Circle Button */
+.circle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.circle-btn i {
+  font-size: 22px;
+  color: #9ba9c5;
+  transition: 0.2s ease;
+}
+
+.circle-btn:hover i {
+  color: #3a7afe;
+  transform: scale(1.2);
+}
+
+/* Task Text */
+.todo-item span {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+  letter-spacing: 0.2px;
+}
+
+/* Delete button */
+.delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn i {
+  font-size: 20px;
+  color: #b0b0b0;
+  transition: 0.25s ease;
+}
+
+.delete-btn:hover i {
+  color: #ff4b4b;
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* =========================================================
+   COMPLETED TASK STYLE  
+========================================================= */
+
+.completed {
+  background: #eef2f8 !important;
+  opacity: 0.75;
+  border-left: 4px solid #94a3b8;
+  transition: 0.3s ease;
+}
+
+.completed span {
+  text-decoration: line-through;
+  color: #666;
+  font-style: italic;
+}
+
+.completed i {
+  color: #4caf50 !important;
+}

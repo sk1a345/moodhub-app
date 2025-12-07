@@ -1,0 +1,24 @@
+<%- include('partials/header',{title: pageTitle}) %>
+<main class="auth-container">
+  <div class="auth-card">
+    <h2>Welcome Back</h2>
+    <p class="auth-subtitle">Login to access your personal MoodHub dashboard.</p>
+    <form action="/login" method="POST" class="auth-form">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" required placeholder="xyz@gmail.com">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" required placeholder="Enter your Password">
+      </div>
+      <button class="btn primary auth-btn " type="submit">Login</button>
+    </form>
+    <p class="auth-switch">
+      Don't have an account? <a href="/signup">Create one</a>
+    </p>
+  </div>
+
+</main>
+
+<%- include('partials/footer',{title: pageTitle}) %>

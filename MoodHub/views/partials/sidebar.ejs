@@ -1,0 +1,55 @@
+<!-- MOBILE HAMBURGER BUTTON -->
+<div class="mobile-header">
+  <button id="hamburgerBtn" class="hamburger">
+    <i class="ri-menu-line"></i>
+  </button>
+  <h2 class="mobile-logo">MoodHub</h2>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <h2 class="logo">MoodHub</h2>
+
+  <nav class="menu">
+    <a href="/dashboard" class="menu-item <%= currentPage ==='dashboard' ? 'active' : '' %>">
+      <i class="ri-home-4-line"></i> Home
+    </a>
+
+    <a href="/favourites" class="menu-item <%= currentPage === 'favourites' ? 'active' : '' %>">
+      <i class="ri-heart-3-line"></i> Favourites
+    </a>
+
+
+    <a href="/todo" class="menu-item <%= currentPage=== 'todo' ? 'active' : '' %>">
+      <i class="ri-task-line"></i> To-Do
+    </a>
+    
+    <a href="/notes" class="menu-item <%= currentPage=== 'notes' ? 'active' : '' %>">
+      <i class="ri-sticky-note-line"></i> Notes
+    </a>
+    
+    <a href="/chat" class="menu-item <%= currentPage === 'chatbot' ? 'active' : '' %>">
+      <i class="ri-chat-1-line"></i> Chatbot
+    </a>
+
+    <a href="/profile" class="menu-item <%= currentPage === 'profile' ? 'active' : '' %>">
+      <i class="ri-user-3-line"></i> Profile
+    </a>
+
+    <a href="/mood" class="menu-item <%= currentPage=== 'mood' ? 'active' : '' %>">
+      <i class="ri-emotion-line"></i>Track Mood
+    </a>
+
+    <a href="/logout" class="menu-item logout">
+      <i class="ri-logout-box-r-line"></i> Logout
+    </a>
+  </nav>
+</aside>
+<script>
+  const hamburgerBtn = document.getElementById("hamburgerBtn");
+  const sidebar = document.getElementById("sidebar");
+
+  hamburgerBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+  });
+</script>

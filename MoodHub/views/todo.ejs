@@ -1,0 +1,62 @@
+<%- include('partials/header',{title: pageTitle}) %>
+<%- include('partials/sidebar') %>
+
+<main class="dashboard-container">
+
+  <h1>To-Do List</h1>
+
+  <!-- Add Task -->
+  <form action="/todo/add" method="POST" class="add-box">
+    <input type="text" name="title" placeholder="Add a new task..." required>
+    <button type="submit" class="btn-primary">
+      <i class="fa-solid fa-plus"></i> Add
+    </button>
+  </form>
+
+  <!-- Active Tasks -->
+  <% if (active.length === 0) { %>
+    <p class="no-active-tasks">No active tasks</p>
+  <% }else{ %>
+    <h3>Active Tasks</h3>
+    <% active.forEach(task => { %>
+    <div class="todo-item">
+
+      <!-- Complete Button -->
+      <form action="/todo/<%= task._id %>/complete" method="POST">
+        <button class="circle-btn">
+          <i class="ri-checkbox-blank-circle-line"></i>
+        </button>
+      </form>
+
+      <span><%= task.title %></span>
+
+      <!-- Delete Button -->
+      <form action="/todo/<%= task._id %>/delete" method="POST">
+        <button class="delete-btn">
+          <i class="ri-delete-bin-6-line"></i>
+        </button>
+      </form>
+
+    </div>
+  <% }) }%>
+
+  <!-- Completed Tasks -->
+  <h3>Completed</h3>
+
+  <% completed.forEach(task => { %>
+    <div class="todo-item completed">
+
+      <span><i class="ri-checkbox-circle-fill"></i> <%= task.title %></span>
+
+      <form action="/todo/<%= task._id %>/delete" method="POST">
+        <button class="delete-btn">
+          <i class="ri-delete-bin-6-line"></i>
+        </button>
+      </form>
+
+    </div>
+  <% }) %>
+
+</main>
+
+<%- include('partials/footer') %>
