@@ -1,4 +1,4 @@
-const Todo = require("../models/Todo");
+const Todo = require("../models/todo");
 
 // Show all todos (active + completed)
 exports.getTodos = async (req, res) => {
